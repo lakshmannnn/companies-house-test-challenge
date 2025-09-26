@@ -11,8 +11,8 @@ module.exports = defineConfig({
     viewportWidth: 1366,
     viewportHeight: 768,
     chromeWebSecurity: false,
-    video: true,
-    screenshotOnRunFailure: true,
+    video: false,
+    screenshotOnRunFailure: false,
     async setupNodeEvents(on, config) {
       await addCucumberPreprocessorPlugin(on, config);
       on(

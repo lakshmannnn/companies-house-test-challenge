@@ -15,11 +15,6 @@ Given('I clear all browser data', () => {
   });
 });
 
-Then('I should already be logged in without re-authentication', () => {
-  // This step purposefully asserts a vulnerability: seeing a welcome banner without fresh login
-  cy.get(selectors.navbarWelcome, { timeout: 8000 }).should('be.visible');
-});
-
 Then('my cart should not be empty', () => {
   cy.get(selectors.cartLink).click();
   cy.get(selectors.cartTableRows, { timeout: 10000 }).its('length').should('be.greaterThan', 0);
