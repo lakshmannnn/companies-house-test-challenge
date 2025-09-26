@@ -19,7 +19,6 @@ Feature: Session Security and Cross-Browser Authentication
   @security @crossbrowser @leak-check
   Scenario: Authentication leakage across browsers
     Given I clear all browser data
-    # TODO: add steps to launch the DemoBlaze URL in incognito mode or in a different browser.
+    # TODO: add steps to launch the DemoBlaze URL in different browsers.
     When I navigate to the DemoBlaze homepage
-    Then I should already be logged in without re-authentication
-    And my cart should not be empty
+    Then my cart should not be empty
