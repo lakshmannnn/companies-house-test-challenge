@@ -1,5 +1,5 @@
 # DemoBlaze Cypress Test Framework
-DemoBlazes
+DemoBlaze
 Overview
 DemoBlaze (DemoBlaze) is the e-commrece test site.
 
@@ -135,3 +135,6 @@ npx cypress run --spec cypress/e2e/features/agreements/search-agreements.feature
 •	Pagination (placeholder for future logic)
 
 cypress/support/commands.js : This file defines several custom Cypress commands that are used extensively in test suite. Here’s a summary of what each command does:
+
+Test Execution:
+![alt text](image.png)
