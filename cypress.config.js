@@ -7,6 +7,13 @@ module.exports = defineConfig({
   e2e: {
     specPattern: "cypress/e2e/**/*.feature",
     baseUrl: "https://www.demoblaze.com",
+    reporter: 'mochawesome',
+    reporterOptions: {
+      reportDir: 'cypress/reports',
+      overwrite: false,
+      html: true,
+      json: true
+    },
     supportFile: "cypress/support/e2e.js",
     viewportWidth: 1366,
     viewportHeight: 768,

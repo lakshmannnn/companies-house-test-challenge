@@ -22,3 +22,5 @@ Feature: Session Security and Cross-Browser Authentication
     # TODO: add steps to launch the DemoBlaze URL in different browsers.
     When I navigate to the DemoBlaze homepage
     Then my cart should not be empty
+    # Issue here is the cart shows the producst added before cache was cleared.
+    # However this behaviour is not coinsistent for all transactaions.
