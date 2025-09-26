@@ -137,4 +137,18 @@ npx cypress run --spec cypress/e2e/features/agreements/search-agreements.feature
 cypress/support/commands.js : This file defines several custom Cypress commands that are used extensively in test suite. Here’s a summary of what each command does:
 
 Test Execution:
-![alt text](image.png)
+       Spec                                              Tests  Passing  Failing  Pending  Skipped
+  ┌────────────────────────────────────────────────────────────────────────────────────────────────┐
+  │ ✔  authentication.feature                   00:06        1        1        -        -        - │
+  ├────────────────────────────────────────────────────────────────────────────────────────────────┤
+  │ ✔  cart.feature                             00:04        1        1        -        -        - │
+  ├────────────────────────────────────────────────────────────────────────────────────────────────┤
+  │ ✔  checkout.feature                         00:08        1        1        -        -        - │
+  ├────────────────────────────────────────────────────────────────────────────────────────────────┤
+  │ ✔  form-validation.feature                  00:03        1        1        -        -        - │
+  ├────────────────────────────────────────────────────────────────────────────────────────────────┤
+  │ ✔  navigation.feature                       00:01        1        1        -        -        - │
+  ├────────────────────────────────────────────────────────────────────────────────────────────────┤
+  │ ✖  security.feature                         00:18        2        1        1        -        - │
+  └────────────────────────────────────────────────────────────────────────────────────────────────┘
+    ✖  1 of 6 failed (17%)                      00:43        7        6        1        -        -
