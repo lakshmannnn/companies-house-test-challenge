@@ -19,6 +19,15 @@ function uniqueUser() {
   return { user, pass };
 }
 
+// Robust typing helper to avoid partial input due to animations or re-renders
+function typeAndVerify(selector, value) {
+  cy.get(selector)
+    .click({ force: true })
+    .clear({ force: true })
+    .type(value, { delay: 0, force: true })
+    .should('have.value', value);
+}
+
 Given('I navigate to the DemoBlaze homepage', () => {
   cy.visit('/index.html');
 });
@@ -28,8 +37,10 @@ When('I register a new unique user', () => {
   cy.wrap(creds).as('creds');
 
   cy.get(selectors.signupBtn).click();
-  cy.get(selectors.signupUsername).should('be.visible').type(creds.user);
-  cy.get(selectors.signupPassword).type(creds.pass);
+  // Ensure the Sign up modal is fully opened (Bootstrap adds class 'show')
+  cy.get('#signInModal').should('be.visible').and('have.class', 'show');
+  typeAndVerify(selectors.signupUsername, creds.user);
+  typeAndVerify(selectors.signupPassword, creds.pass);
 
   cy.window().then((win) => {
     cy.stub(win, 'alert').as('alert');
@@ -49,8 +60,9 @@ When('I log in with the registered user', () => {
     // Ensure Sign up modal is closed and not covering the login button
     cy.get('#signInModal').should('not.be.visible');
     cy.get(selectors.loginBtn).click();
-    cy.get(selectors.loginUsername).should('be.visible').type(user);
-    cy.get(selectors.loginPassword).type(pass);
+    cy.get(selectors.loginUsername).should('be.visible');
+    typeAndVerify(selectors.loginUsername, user);
+    typeAndVerify(selectors.loginPassword, pass);
     cy.get(selectors.loginSubmit).click();
   });
 });
