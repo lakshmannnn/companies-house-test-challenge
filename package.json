@@ -28,7 +28,11 @@
     "cleanAndGenerateReports": "npm run cleanReports && npm run runTestsToGenerateReports",
     "mergeAndGenerateReports": "npm run mergeReports && npm run generateReports",
     "e2eReports": "npm run cleanAndGenerateReports && npm run mergeAndGenerateReports",
-    "runMultiBrowser": "npm run triggerAllTests-chrome --spec cypress/e2e/search-filters.cy.js && npm run triggerAllTests-edge --spec cypress/e2e/search-filters.cy.js && npm run triggerAllTests-firefox --spec cypress/e2e/search-filters.cy.js"
+    "runMultiBrowser": "npm run triggerAllTests-chrome --spec cypress/e2e/search-filters.cy.js && npm run triggerAllTests-edge --spec cypress/e2e/search-filters.cy.js && npm run triggerAllTests-firefox --spec cypress/e2e/search-filters.cy.js",
+    "security:setup:chrome": "npx cypress run --browser chrome --spec cypress/e2e/security-cross-browser.feature --env TAGS='@setup and @security'",
+    "security:leak:firefox": "npx cypress run --browser firefox --spec cypress/e2e/security-cross-browser.feature --env TAGS='@leak-check and @security'",
+    "security:leak:edge": "npx cypress run --browser edge --spec cypress/e2e/security-cross-browser.feature --env TAGS='@leak-check and @security'",
+    "security:run-all": "npm run security:setup:chrome && npm run security:leak:firefox && npm run security:leak:edge"
   },
   "author": "lakshman",
   "license": "ISC",

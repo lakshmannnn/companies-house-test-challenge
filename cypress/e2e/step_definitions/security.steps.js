@@ -1,0 +1,26 @@
+import { Given, When, Then } from '@badeball/cypress-cucumber-preprocessor';
+
+const selectors = {
+  navbarWelcome: '#nameofuser',
+  cartLink: '#cartur',
+  cartTableRows: '#tbodyid tr'
+};
+
+Given('I clear all browser data', () => {
+  cy.clearCookies();
+  cy.clearLocalStorage();
+  // Clear session storage via app context
+  cy.window().then((win) => {
+    try { win.sessionStorage.clear(); } catch (e) {}
+  });
+});
+
+Then('I should already be logged in without re-authentication', () => {
+  // This step purposefully asserts a vulnerability: seeing a welcome banner without fresh login
+  cy.get(selectors.navbarWelcome, { timeout: 8000 }).should('be.visible');
+});
+
+Then('my cart should not be empty', () => {
+  cy.get(selectors.cartLink).click();
+  cy.get(selectors.cartTableRows, { timeout: 10000 }).its('length').should('be.greaterThan', 0);
+});
